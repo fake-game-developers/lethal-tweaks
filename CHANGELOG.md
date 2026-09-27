@@ -1,3 +1,7 @@
+# Version 2.0.5
+**Changed**
+ - The Thunderstore package website now points at https://github.com/fake-game-developers/lethal-tweaks.
+
 # Version 2.0.4
 **Changed**
  - The Thunderstore package website now points at https://github.com/fake-game-developers/MikesTweaks. The original mod is still credited to MikeMediaStudios (MikeS-MS).

@@ -2,7 +2,7 @@
 Mod for Lethal Company with multiple configs for tweaks to customize your game's experience.
 
 ## Credits
-This package is maintained by **Fake Game Developers**: [fake-game-developers/MikesTweaks](https://github.com/fake-game-developers/MikesTweaks).
+This package is maintained by **Fake Game Developers**: [fake-game-developers/lethal-tweaks](https://github.com/fake-game-developers/lethal-tweaks).
 LethalTweaks is a continuation of [MikesTweaks](https://github.com/MikeS-MS/MikesTweaks) by **MikeMediaStudios** ([MikeS-MS](https://github.com/MikeS-MS)).
 The original mod is published on Thunderstore as [MikeMediaStudios/MikesTweaks](https://thunderstore.io/c/lethal-company/p/MikeMediaStudios/MikesTweaks/). 
 
