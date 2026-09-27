@@ -5,7 +5,7 @@
     <AssemblyName>LethalTweaks</AssemblyName>
     <Authors>MikeMediaStudios, Fake Game Developers</Authors>
     <Description>Continuation of MikesTweaks by MikeMediaStudios (MikeS-MS). Configurable item weights, item prices, inventory slots, keybinds, stamina, and moon costs.</Description>
-    <Version>2.0.3</Version>
+    <Version>2.0.4</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <ThunderstorePackable>true</ThunderstorePackable>
