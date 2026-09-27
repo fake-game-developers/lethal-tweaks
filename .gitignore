@@ -6,3 +6,18 @@
 
 # Local game and BepInEx paths (copy from Config.Build.user.props.example)
 Config.Build.user.props
+
+# Build output
+[Bb]in/
+[Oo]bj/
+artifacts/
+*.nupkg
+*.snupkg
+
+# Stripped game assemblies downloaded for CI-style builds
+.gamelibs/
+.gamelibs-nupkg/
+lethalapi.gamelibs.nupkg
+
+# Unpacked Thunderstore zip from a local CI dry run
+ts-artifact/

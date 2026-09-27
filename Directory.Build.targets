@@ -1,12 +1,52 @@
 <Project>
-  <Target Name="EnsureLethalCompanyReferences" BeforeTargets="ResolveAssemblyReferences">
+  <PropertyGroup>
+    <RestoreAdditionalProjectSources>
+      https://nuget.bepinex.dev/v3/index.json;
+      https://nuget.windows10ce.com/nuget/v3/index.json
+    </RestoreAdditionalProjectSources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Core" Version="5.4.21" />
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(ManagedDir)' == '' or !Exists('$(ManagedDir)')">
+    <PackageReference Include="UnityEngine.Modules" Version="2022.3.62" PrivateAssets="all" />
+  </ItemGroup>
+
+  <Target Name="EnsureLethalCompanyManagedAssemblies" BeforeTargets="ResolveAssemblyReferences">
     <Error
-      Text="Lethal Company was not found. Install it through Steam, set LETHAL_COMPANY_DIR to the folder that contains Lethal Company.exe, or copy Config.Build.user.props.example to Config.Build.user.props and set LethalCompanyDir."
-      Condition="!Exists('$(GameManaged)Assembly-CSharp.dll')"
+      Text="Lethal Company game assemblies not found. Install Lethal Company, set LETHAL_COMPANY_DIR to the folder that contains Lethal Company.exe, or pass -p:ManagedDir= to a folder that contains Assembly-CSharp.dll."
+      Condition="'$(ManagedDir)' == '' or !Exists('$(ManagedDir)Assembly-CSharp.dll')"
     />
+  </Target>
+
+  <ItemGroup Condition="'$(ManagedDir)' != '' and Exists('$(ManagedDir)')">
+    <LocalReferences
+      Include="$(ManagedDir)*.dll"
+      Exclude="$(ManagedDir)Mono*.dll;$(ManagedDir)netstandard.dll;$(ManagedDir)System*.dll;$(ManagedDir)mscorlib.dll"
+    />
+    <Reference Include="@(LocalReferences)" Private="false" />
+    <Reference Include="$(ManagedDir)Assembly-CSharp.dll" Private="false" Publicize="true" />
+  </ItemGroup>
+
+  <!--
+    Build and optionally publish the Thunderstore package:
+      dotnet build -c Release -target:PackTS -v m
+      dotnet build -c Release -target:PackTS -v m -p:PublishTS=true
+  -->
+  <Target Name="PackTS" DependsOnTargets="Build" Condition="$(ThunderstorePackable) != 'false'">
     <Error
-      Text="BepInEx was not found (missing 0Harmony.dll). Install BepInEx in the game folder or in an r2modman profile, set BEPINEX_CORE, or set BepInExCore in Config.Build.user.props."
-      Condition="!Exists('$(BepInExCore)0Harmony.dll')"
+      Text="PackTS must be called with Release configuration."
+      Condition="'$(Configuration)' != 'Release'"
     />
+    <PropertyGroup>
+      <BuildArgument Condition="'$(PublishTS)' != 'true'">build</BuildArgument>
+      <BuildArgument Condition="'$(PublishTS)' == 'true'">publish</BuildArgument>
+    </PropertyGroup>
+    <Exec Command="dotnet tool restore" />
+    <Exec Command="dotnet tcli $(BuildArgument) --package-version $(Version)" />
   </Target>
 </Project>
