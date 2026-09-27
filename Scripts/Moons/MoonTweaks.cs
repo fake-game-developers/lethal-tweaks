@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
-using MikesTweaks.Scripts.Configs;
-using MikesTweaks.Scripts.Networking;
-using MikesTweaks.Scripts.World;
+using LethalTweaks.Scripts.Configs;
+using LethalTweaks.Scripts.Networking;
+using LethalTweaks.Scripts.World;
 using Newtonsoft.Json;
 using Unity.Netcode;
 using UnityEngine;
 
-namespace MikesTweaks.Scripts.Moons
+namespace LethalTweaks.Scripts.Moons
 {
     public class MoonTweaks
     {
@@ -38,8 +38,8 @@ namespace MikesTweaks.Scripts.Moons
 
         public static void RegisterConfigs()
         {
-            MikesTweaks.Instance.BindConfig(ref Configs.MoonPrices, Configs.MoonPricesHeader);
-            MikesTweaks.Instance.Config.ConfigReloaded += new EventHandler((object sender, EventArgs a) =>
+            LethalTweaks.Instance.BindConfig(ref Configs.MoonPrices, Configs.MoonPricesHeader);
+            LethalTweaks.Instance.Config.ConfigReloaded += new EventHandler((object sender, EventArgs a) =>
             {
                 ReadMoonPrices();
                 ApplyVanillaMoonCosts(ref Configs.MoonPricesDeserialized, WorldTweaks.Configs.UseVanillaMoonCosts.Value());

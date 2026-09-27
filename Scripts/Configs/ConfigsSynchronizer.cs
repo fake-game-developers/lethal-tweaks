@@ -10,7 +10,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace MikesTweaks.Scripts.Networking
+namespace LethalTweaks.Scripts.Networking
 {
     public class ConfigsSynchronizer
     {

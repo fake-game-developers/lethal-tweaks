@@ -10,30 +10,31 @@ using BepInEx.Configuration;
 using BepInEx.Logging;
 using GameNetcodeStuff;
 using HarmonyLib;
-using MikesTweaks.Scripts.Configs;
-using MikesTweaks.Scripts.Environment;
-using MikesTweaks.Scripts.Inventory;
-using MikesTweaks.Scripts.Items;
-using MikesTweaks.Scripts.Moons;
-using MikesTweaks.Scripts.Networking;
-using MikesTweaks.Scripts.Player;
-using MikesTweaks.Scripts.Systems;
-using MikesTweaks.Scripts.World;
+using LethalTweaks.Scripts.Configs;
+using LethalTweaks.Scripts.Environment;
+using LethalTweaks.Scripts.Inventory;
+using LethalTweaks.Scripts.Items;
+using LethalTweaks.Scripts.Moons;
+using LethalTweaks.Scripts.Networking;
+using LethalTweaks.Scripts.Player;
+using LethalTweaks.Scripts.Systems;
+using LethalTweaks.Scripts.World;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UIElements.Internal;
 
-namespace MikesTweaks.Scripts
+namespace LethalTweaks.Scripts
 {
     [BepInPlugin(GUID, PluginInfo.PLUGIN_NAME, PluginInfo.PLUGIN_VERSION)]
-    public class MikesTweaks : BaseUnityPlugin
+    public class LethalTweaks : BaseUnityPlugin
     {
-        public const string GUID = "mikes.lethalcompany.mikestweaks";
+        public const string GUID = "lethaltweaks.lethalcompany";
+        private const string LegacyConfigFileName = "mikes.lethalcompany.mikestweaks.cfg";
         public const bool DebugMode = false;
 
         public static ManualLogSource Log = null;
-        public static MikesTweaks Instance { get; private set; } = null;
+        public static LethalTweaks Instance { get; private set; } = null;
 
         public static class Compatibility
         {
@@ -59,6 +60,7 @@ namespace MikesTweaks.Scripts
         {
             Instance = this;
             Log = Logger;
+            UseLegacyConfigIfPresent();
             WorldTweaks.RegisterConfigs();
             MoonTweaks.RegisterConfigs();
             PlayerTweaks.RegisterConfigs();
@@ -79,6 +81,27 @@ namespace MikesTweaks.Scripts
 
 
             Logger.LogInfo($"Plugin {GUID} is loaded!");
+        }
+
+        private void UseLegacyConfigIfPresent()
+        {
+            if (File.Exists(Config.ConfigFilePath))
+                return;
+
+            string legacyPath = Path.Combine(Paths.ConfigPath, LegacyConfigFileName);
+            if (!File.Exists(legacyPath))
+                return;
+
+            var pathField = typeof(ConfigFile).GetField("<ConfigFilePath>k__BackingField", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (pathField == null)
+            {
+                Log.LogWarning($"No {GUID}.cfg found, and the legacy config could not be selected.");
+                return;
+            }
+
+            pathField.SetValue(Config, legacyPath);
+            Config.Reload();
+            Log.LogInfo($"No {GUID}.cfg found. Using {LegacyConfigFileName}.");
         }
 
         private void CheckCompatibilities()

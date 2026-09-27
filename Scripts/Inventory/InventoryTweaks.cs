@@ -7,17 +7,17 @@ using GameNetcodeStuff;
 using UnityEngine;
 using System.Reflection;
 using BepInEx.Configuration;
-using MikesTweaks.Scripts.Items;
+using LethalTweaks.Scripts.Items;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
-using MikesTweaks.Scripts.Networking;
-using MikesTweaks.Scripts.World;
+using LethalTweaks.Scripts.Networking;
+using LethalTweaks.Scripts.World;
 using Unity.Netcode;
-using MikesTweaks.Scripts.Configs;
-using MikesTweaks.Scripts.Player;
-using MikesTweaks.Scripts.Utilities;
+using LethalTweaks.Scripts.Configs;
+using LethalTweaks.Scripts.Player;
+using LethalTweaks.Scripts.Utilities;
 
-namespace MikesTweaks.Scripts.Inventory
+namespace LethalTweaks.Scripts.Inventory
 {
     public class InventoryTweaks
     {
@@ -68,12 +68,12 @@ namespace MikesTweaks.Scripts.Inventory
 
         public static void RegisterConfigs()
         {
-            MikesTweaks.Instance.BindConfig(ref Configs.ExtraItemSlotsAmount, Configs.InventoryTweaksSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.ExtraItemSlotsAmount, Configs.InventoryTweaksSectionHeader);
 
             for (int i = 0; i < Configs.ToolItemWeights.Length; i++)
             {
-                MikesTweaks.Instance.BindConfig(ref Configs.ToolItemWeights[i], Configs.TerminalItemProperties);
-                MikesTweaks.Instance.BindConfig(ref Configs.ToolItemPrices[i], Configs.TerminalItemProperties);
+                LethalTweaks.Instance.BindConfig(ref Configs.ToolItemWeights[i], Configs.TerminalItemProperties);
+                LethalTweaks.Instance.BindConfig(ref Configs.ToolItemPrices[i], Configs.TerminalItemProperties);
             }
 
             ConfigsSynchronizer.OnConfigsChangedDelegate += () =>

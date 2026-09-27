@@ -9,23 +9,23 @@ using Vector3 = UnityEngine.Vector3;
 using GameNetcodeStuff;
 using BepInEx.Configuration;
 using HarmonyLib;
-using MikesTweaks.Scripts.Inventory;
-using MikesTweaks.Scripts.Input;
+using LethalTweaks.Scripts.Inventory;
+using LethalTweaks.Scripts.Input;
 using Mono.Cecil.Cil;
 using UnityEngine.InputSystem;
 using Object = System.Object;
 using OpCodes = System.Reflection.Emit.OpCodes;
 using System.Reflection.Emit;
 using Dissonance.Integrations.Unity_NFGO;
-using MikesTweaks.Scripts.Networking;
-using MikesTweaks.Scripts.Systems;
-using MikesTweaks.Scripts.World;
+using LethalTweaks.Scripts.Networking;
+using LethalTweaks.Scripts.Systems;
+using LethalTweaks.Scripts.World;
 using Unity.Collections;
 using Unity.Netcode;
 using static UnityEngine.UI.GridLayoutGroup;
-using MikesTweaks.Scripts.Configs;
+using LethalTweaks.Scripts.Configs;
 
-namespace MikesTweaks.Scripts.Player
+namespace LethalTweaks.Scripts.Player
 {
 
     public class PlayerTweaks
@@ -96,22 +96,22 @@ namespace MikesTweaks.Scripts.Player
 
         public static void RegisterConfigs()
         {
-            MikesTweaks.Instance.BindConfig(ref Configs.MaxStamina, Configs.PlayerTweaksSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.DefaultSprintSpeed, Configs.PlayerTweaksSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.SprintSpeedIncreasePerFrame, Configs.PlayerTweaksSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.SprintSpeedDecreasePerFrame, Configs.PlayerTweaksSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.MaxSprintSpeed, Configs.PlayerTweaksSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.StaminaRechargePerFrame, Configs.PlayerTweaksSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.StaminaWeightWhileWalking, Configs.PlayerTweaksSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.StaminaWeightWhileStandingStill, Configs.PlayerTweaksSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.JumpStaminaDrain, Configs.PlayerTweaksSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.MaxStamina, Configs.PlayerTweaksSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.DefaultSprintSpeed, Configs.PlayerTweaksSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.SprintSpeedIncreasePerFrame, Configs.PlayerTweaksSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.SprintSpeedDecreasePerFrame, Configs.PlayerTweaksSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.MaxSprintSpeed, Configs.PlayerTweaksSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.StaminaRechargePerFrame, Configs.PlayerTweaksSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.StaminaWeightWhileWalking, Configs.PlayerTweaksSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.StaminaWeightWhileStandingStill, Configs.PlayerTweaksSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.JumpStaminaDrain, Configs.PlayerTweaksSectionHeader);
             
-            MikesTweaks.Instance.BindConfig(ref Configs.FlashlightKeybind, Configs.KeybindsSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.WalkieTalkieKeybind, Configs.KeybindsSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.FlashlightKeybind, Configs.KeybindsSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.WalkieTalkieKeybind, Configs.KeybindsSectionHeader);
             for (int i = 0; i < Configs.SlotKeybinds.Length; i++)
-                MikesTweaks.Instance.BindConfig(ref Configs.SlotKeybinds[i], Configs.KeybindsSectionHeader);
+                LethalTweaks.Instance.BindConfig(ref Configs.SlotKeybinds[i], Configs.KeybindsSectionHeader);
             for (int i = 0; i < Configs.EmoteKeybinds.Length; i++)
-                MikesTweaks.Instance.BindConfig(ref Configs.EmoteKeybinds[i], Configs.KeybindsSectionHeader);
+                LethalTweaks.Instance.BindConfig(ref Configs.EmoteKeybinds[i], Configs.KeybindsSectionHeader);
 
             ConfigsSynchronizer.OnConfigsChangedDelegate += () => ReapplyConfigs(LocalPlayerController, true, true, true);
             ConfigsSynchronizer.Instance.AddConfigGetter(WriteConfigsToWriter);
@@ -172,7 +172,7 @@ namespace MikesTweaks.Scripts.Player
             int VanillaInventorySlots = player.ItemSlots.Length;
             player.sprintTime = Configs.MaxStamina.Value(WorldTweaks.Configs.UseVanillaStaminaValues.Value());
 
-            if (MikesTweaks.Compatibility.ReservedSlotCoreCompat || MikesTweaks.Compatibility.LethalThingsCompat)
+            if (LethalTweaks.Compatibility.ReservedSlotCoreCompat || LethalTweaks.Compatibility.LethalThingsCompat)
                 return;
 
             if (!applyToAllPlayers)
@@ -191,11 +191,11 @@ namespace MikesTweaks.Scripts.Player
                 InventoryTweaks.ChangeItemSlotsAmountUI();
 
 
-            if (!MikesTweaks.DebugMode)
+            if (!LethalTweaks.DebugMode)
                 return;
 
-            MikesTweaks.Log.LogInfo($"InventorySlots: {VanillaInventorySlots}");
-            MikesTweaks.Log.LogInfo($"MaxStamina: {VanillaSprintTime}");
+            LethalTweaks.Log.LogInfo($"InventorySlots: {VanillaInventorySlots}");
+            LethalTweaks.Log.LogInfo($"MaxStamina: {VanillaSprintTime}");
         }
 
         public static void RegisterSwitchSlotMessage()

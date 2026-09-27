@@ -1,23 +1,23 @@
 ﻿using GameNetcodeStuff;
-using MikesTweaks.Scripts.Input;
-using MikesTweaks.Scripts.Inventory;
+using LethalTweaks.Scripts.Input;
+using LethalTweaks.Scripts.Inventory;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
-using MikesTweaks.Scripts.Networking;
-using MikesTweaks.Scripts.World;
+using LethalTweaks.Scripts.Networking;
+using LethalTweaks.Scripts.World;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine.InputSystem;
 using UnityEngine;
 
-namespace MikesTweaks.Scripts.Player
+namespace LethalTweaks.Scripts.Player
 {
-    public class PlayerInputRedirection : MonoBehaviour, MikesTweaksPlayerInput.IHotbarActions, MikesTweaksPlayerInput.IEmotesActions, MikesTweaksPlayerInput.IActionsActions
+    public class PlayerInputRedirection : MonoBehaviour, LethalTweaksPlayerInput.IHotbarActions, LethalTweaksPlayerInput.IEmotesActions, LethalTweaksPlayerInput.IActionsActions
     {
         private PlayerControllerB owner = null;
-        private MikesTweaksPlayerInput input = null;
+        private LethalTweaksPlayerInput input = null;
         private MethodInfo SwitchToSlotMethod = null;
         private WalkieTalkie WalkieTalkieToStop = null;
         private FlashlightItem FlashlightToStop = null;
@@ -162,7 +162,7 @@ namespace MikesTweaks.Scripts.Player
         public void InitializeKeybinds()
         {
             owner = gameObject.GetComponent<PlayerControllerB>();
-            input = new MikesTweaksPlayerInput();
+            input = new LethalTweaksPlayerInput();
             input.Hotbar.SetCallbacks(this);
             input.Emotes.SetCallbacks(this);
             input.Actions.SetCallbacks(this);
@@ -232,7 +232,7 @@ namespace MikesTweaks.Scripts.Player
             if (!NetworkManager.Singleton.IsServer && !ConfigsSynchronizer.ConfigsReceived)
                 return;
 
-            if (!WorldTweaks.Configs.AllowFlashlightKeybind.Value() || MikesTweaks.Compatibility.ReservedSlotsFlashlightCompat)
+            if (!WorldTweaks.Configs.AllowFlashlightKeybind.Value() || LethalTweaks.Compatibility.ReservedSlotsFlashlightCompat)
                 return;
 
             bool canUseItem = PlayerTweaks.CanUseItem(owner);
@@ -320,7 +320,7 @@ namespace MikesTweaks.Scripts.Player
             if (!NetworkManager.Singleton.IsServer && !ConfigsSynchronizer.ConfigsReceived)
                 return;
 
-            if (!WorldTweaks.Configs.AllowWalkieTalkieKeybind.Value() || MikesTweaks.Compatibility.ReservedSlotsWalkieCompat)
+            if (!WorldTweaks.Configs.AllowWalkieTalkieKeybind.Value() || LethalTweaks.Compatibility.ReservedSlotsWalkieCompat)
                 return;
 
             bool canUseItem = PlayerTweaks.CanUseItem(owner);

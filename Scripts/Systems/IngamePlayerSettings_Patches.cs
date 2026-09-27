@@ -5,7 +5,7 @@ using System.Reflection.Emit;
 using System.Text;
 using HarmonyLib;
 
-namespace MikesTweaks.Scripts.Systems
+namespace LethalTweaks.Scripts.Systems
 {
     [HarmonyPatch(typeof(IngamePlayerSettings))]
     public class IngamePlayerSettings_Patches

@@ -5,7 +5,7 @@ using System.Text;
 using BepInEx.Configuration;
 using JetBrains.Annotations;
 
-namespace MikesTweaks.Scripts.Configs
+namespace LethalTweaks.Scripts.Configs
 {
     public class ConfigEntrySettings<T>
     {

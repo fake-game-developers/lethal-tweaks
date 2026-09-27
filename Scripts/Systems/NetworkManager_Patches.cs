@@ -1,8 +1,8 @@
 ﻿using HarmonyLib;
-using MikesTweaks.Scripts.Networking;
+using LethalTweaks.Scripts.Networking;
 using Unity.Netcode;
 
-namespace MikesTweaks.Scripts.Systems;
+namespace LethalTweaks.Scripts.Systems;
 
 [HarmonyPatch(typeof(NetworkManager))]
 public static class NetworkManager_Patches

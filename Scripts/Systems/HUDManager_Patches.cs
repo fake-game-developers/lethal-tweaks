@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MikesTweaks.Scripts.Inventory;
+using LethalTweaks.Scripts.Inventory;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace MikesTweaks.Scripts.Systems
+namespace LethalTweaks.Scripts.Systems
 {
     [HarmonyPatch(typeof(HUDManager))]
     public class HUDManager_Patches
@@ -19,7 +19,7 @@ namespace MikesTweaks.Scripts.Systems
         {
             if (!NetworkManager.Singleton.IsServer)
                 return;
-            if (MikesTweaks.Compatibility.ReservedSlotCoreCompat || MikesTweaks.Compatibility.LethalThingsCompat)
+            if (LethalTweaks.Compatibility.ReservedSlotCoreCompat || LethalTweaks.Compatibility.LethalThingsCompat)
                 return;
 
             InventoryTweaks.ChangeItemSlotsAmountUI();

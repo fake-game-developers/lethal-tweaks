@@ -5,12 +5,12 @@ using System.Text;
 using BepInEx.Configuration;
 using GameNetcodeStuff;
 using HarmonyLib;
-using MikesTweaks.Scripts.Configs;
-using MikesTweaks.Scripts.Inventory;
-using MikesTweaks.Scripts.Networking;
+using LethalTweaks.Scripts.Configs;
+using LethalTweaks.Scripts.Inventory;
+using LethalTweaks.Scripts.Networking;
 using Unity.Netcode;
 
-namespace MikesTweaks.Scripts.World
+namespace LethalTweaks.Scripts.World
 {
     public class WorldTweaks
     {
@@ -66,16 +66,16 @@ namespace MikesTweaks.Scripts.World
 
         public static void RegisterConfigs()
         {
-            MikesTweaks.Instance.BindConfig(ref Configs.GlobalTimeSpeedMulti, Configs.GameRulesSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.AllowHotbarKeybinds, Configs.GameRulesSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.AllowFlashlightKeybind, Configs.GameRulesSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.AllowWalkieTalkieKeybind, Configs.GameRulesSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.AllowClientsToUseTerminal, Configs.GameRulesSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.UseVanillaSprintSpeedValues, Configs.GameRulesSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.UseVanillaStaminaValues, Configs.GameRulesSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.UseVanillaToolItemWeights, Configs.GameRulesSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.UseVanillaToolItemPrices, Configs.GameRulesSectionHeader);
-            MikesTweaks.Instance.BindConfig(ref Configs.UseVanillaMoonCosts, Configs.GameRulesSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.GlobalTimeSpeedMulti, Configs.GameRulesSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.AllowHotbarKeybinds, Configs.GameRulesSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.AllowFlashlightKeybind, Configs.GameRulesSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.AllowWalkieTalkieKeybind, Configs.GameRulesSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.AllowClientsToUseTerminal, Configs.GameRulesSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.UseVanillaSprintSpeedValues, Configs.GameRulesSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.UseVanillaStaminaValues, Configs.GameRulesSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.UseVanillaToolItemWeights, Configs.GameRulesSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.UseVanillaToolItemPrices, Configs.GameRulesSectionHeader);
+            LethalTweaks.Instance.BindConfig(ref Configs.UseVanillaMoonCosts, Configs.GameRulesSectionHeader);
 
             ConfigsSynchronizer.OnConfigsChangedDelegate += () => ReapplyConfigs(TimeOfDay.Instance);
             ConfigsSynchronizer.Instance.AddConfigGetter(WriteConfigsToWriter);

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MikesTweaks.Scripts.Inventory;
-using MikesTweaks.Scripts.Moons;
-using MikesTweaks.Scripts.World;
+using LethalTweaks.Scripts.Inventory;
+using LethalTweaks.Scripts.Moons;
+using LethalTweaks.Scripts.World;
 using Unity.Netcode;
 
-namespace MikesTweaks.Scripts.Items
+namespace LethalTweaks.Scripts.Items
 {
     [HarmonyPatch(typeof(Terminal))]
     public class Terminal_Patches

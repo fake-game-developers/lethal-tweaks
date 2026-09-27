@@ -1,10 +1,10 @@
 ﻿using HarmonyLib;
-using MikesTweaks.Scripts.Inventory;
-using MikesTweaks.Scripts.Networking;
-using MikesTweaks.Scripts.Player;
+using LethalTweaks.Scripts.Inventory;
+using LethalTweaks.Scripts.Networking;
+using LethalTweaks.Scripts.Player;
 using Unity.Netcode;
 
-namespace MikesTweaks.Scripts.Systems;
+namespace LethalTweaks.Scripts.Systems;
 
 [HarmonyPatch(typeof(StartOfRound))]
 public static class StartOfRound_Patches

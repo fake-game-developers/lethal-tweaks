@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MikesTweaks.Scripts.Utilities
+namespace LethalTweaks.Scripts.Utilities
 {
     public static class StringUtils
     {

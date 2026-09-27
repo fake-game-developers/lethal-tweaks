@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MikesTweaks.Scripts.World;
+using LethalTweaks.Scripts.World;
 using Unity.Netcode;
 
-namespace MikesTweaks.Scripts.Systems
+namespace LethalTweaks.Scripts.Systems
 {
     [HarmonyPatch(typeof(TimeOfDay))]
     public class TimeOfDay_Patches

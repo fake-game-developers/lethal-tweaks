@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MikesTweaks.Scripts.Configs;
-using MikesTweaks.Scripts.Inventory;
-using MikesTweaks.Scripts.Networking;
-using MikesTweaks.Scripts.World;
+using LethalTweaks.Scripts.Configs;
+using LethalTweaks.Scripts.Inventory;
+using LethalTweaks.Scripts.Networking;
+using LethalTweaks.Scripts.World;
 using Unity.Netcode;
 
-namespace MikesTweaks.Scripts.Items
+namespace LethalTweaks.Scripts.Items
 {
     [HarmonyPatch(typeof(GrabbableObject))]
     public class GrabbableObject_Patches
@@ -17,8 +17,8 @@ namespace MikesTweaks.Scripts.Items
         [HarmonyPostfix]
         public static void ChangeTerminalItemWeights(GrabbableObject __instance)
         {
-            if (MikesTweaks.DebugMode)
-                MikesTweaks.Log.LogInfo($"{__instance.itemProperties.name}: {__instance.itemProperties.weight}");
+            if (LethalTweaks.DebugMode)
+                LethalTweaks.Log.LogInfo($"{__instance.itemProperties.name}: {__instance.itemProperties.weight}");
 
             if (!NetworkManager.Singleton.IsServer && !ConfigsSynchronizer.ConfigsReceived)
                 return;

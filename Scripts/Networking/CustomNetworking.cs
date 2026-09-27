@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Unity.Netcode;
 
-namespace MikesTweaks.Scripts.Networking
+namespace LethalTweaks.Scripts.Networking
 {
     public class CustomNetworking
     {

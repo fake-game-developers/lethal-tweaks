@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using HarmonyLib;
-using MikesTweaks.Scripts.Networking;
+using LethalTweaks.Scripts.Networking;
 
-namespace MikesTweaks.Scripts.Systems
+namespace LethalTweaks.Scripts.Systems
 {
     [HarmonyPatch(typeof(MenuManager))]
     public class MenuManager_Patches
@@ -13,7 +13,7 @@ namespace MikesTweaks.Scripts.Systems
         [HarmonyPostfix]
         private static void MenuManager_Start(MenuManager __instance)
         {
-            MikesTweaks.Instance.LoadConfigs();
+            LethalTweaks.Instance.LoadConfigs();
             CustomNetworking.Instance.UnregisterChannels();
         }
     }

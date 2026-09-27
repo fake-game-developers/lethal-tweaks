@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using GameNetcodeStuff;
 using HarmonyLib;
-using MikesTweaks.Scripts.World;
+using LethalTweaks.Scripts.World;
 
-namespace MikesTweaks.Scripts.Environment
+namespace LethalTweaks.Scripts.Environment
 {
     [HarmonyPatch(typeof(EntranceTeleport))]
     public class EntranceTeleport_Patches

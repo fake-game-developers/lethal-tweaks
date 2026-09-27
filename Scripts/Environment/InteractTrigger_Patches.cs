@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using HarmonyLib;
-using MikesTweaks.Scripts.World;
+using LethalTweaks.Scripts.World;
 using Unity.Netcode;
 
-namespace MikesTweaks.Scripts.Environment
+namespace LethalTweaks.Scripts.Environment
 {
     [HarmonyPatch(typeof(InteractTrigger))]
     public class InteractTrigger_Patches

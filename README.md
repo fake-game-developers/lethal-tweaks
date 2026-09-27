@@ -1,5 +1,10 @@
-# MikesTweaks
-Mod for Lethal Company with multiple configs for tweaks to customize your game's experience. 
+# LethalTweaks
+Mod for Lethal Company with multiple configs for tweaks to customize your game's experience.
+
+## Credits
+LethalTweaks is a continuation of [MikesTweaks](https://github.com/MikeS-MS/MikesTweaks) by **MikeMediaStudios** ([MikeS-MS](https://github.com/MikeS-MS)).
+The original mod is published on Thunderstore as [MikeMediaStudios/MikesTweaks](https://thunderstore.io/c/lethal-company/p/MikeMediaStudios/MikesTweaks/).
+This package is maintained by **Fake Game Developers**. 
 
 # Important! 
 **If you're updating from before 1.9, backup your changed values in the config file, delete the config file, run the game again after updating to regenerate it and change the configs again to what they were before.**
@@ -39,7 +44,7 @@ Mod for Lethal Company with multiple configs for tweaks to customize your game's
 ## Info
   - For more detailed information on the config options check the config file.
 
-  - Config File is located at (GAME_DIRECTORY/BepinEx/configs/mikes.lethalcompany.mikestweaks.cfg)
+  - Config File is located at (GAME_DIRECTORY/BepinEx/configs/lethaltweaks.lethalcompany.cfg). If that file does not exist, mikes.lethalcompany.mikestweaks.cfg is used instead.
 
   - If you use the "Use Vanilla" game rules as a client you use the vanilla settings for that category regardless of the host's settings.
 

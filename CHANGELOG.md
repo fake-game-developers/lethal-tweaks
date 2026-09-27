@@ -1,3 +1,9 @@
+# Version 2.0.3
+**Changed**
+ - Continued as LethalTweaks by Fake Game Developers. The original mod is MikesTweaks by MikeMediaStudios (MikeS-MS): https://github.com/MikeS-MS/MikesTweaks and https://thunderstore.io/c/lethal-company/p/MikeMediaStudios/MikesTweaks/
+ - Fixed a crash that stopped the player from spawning after installing Black Mesa Half-Life Moon Interior. MikesTweaks 2.0.2 rewrote `PlayerControllerB.LateUpdate` and assumed local 0 was the float stamina multiplier, around the 0.5 / 4 / 9 recharge constants. Current Lethal Company builds keep an int in local 0, so that patch emitted invalid IL (`InvalidProgramException`, `call 0x00000201`). Black Mesa also prefixes `LateUpdate` to lock a player on elevators and barnacles. Harmony recompiled the method with the broken transpiler still attached, and that exception aborted Black Mesa's startup before `GenerationRulesPrefab` was loaded. `StartOfRound` then tried to instantiate a null prefab, DawnLib never finished registering moons (`KeyNotFoundException` for `lethal_company:march`), and the round never became playable. The stamina recharge patch now uses the actual float local instead of local 0.
+ - An existing `mikes.lethalcompany.mikestweaks.cfg` is still used when `lethaltweaks.lethalcompany.cfg` is not present.
+
 # Version 2.0.2
 **Added**
  - Compatibility mode for LateGameUpgrades that automatically disables my stamina recharge values and jump stamina drain value
